@@ -13,6 +13,11 @@ import Treatment from "../Components/Patient/Treatment/Treatment.jsx";
 import NewTurn from "../Components/Patient/Turn/NewTurn/NewTurn.jsx";
 import TurnCalendar from "../Components/Patient/Turn/TurnCalendar/TurnCalendar.jsx";
 import ProfileConfiguration from "../Components/Patient/ProfileConfiguration/ProfileConfiguration.jsx";
+import Consultation from "../Components/Doctor/Consultation/Consultation.jsx"
+import PreviousConsultation from "../Components/Doctor/PreviousConsultation/PreviousConsultation.jsx"
+import Calendar from "../Components/Doctor/Calendar/Calendar.jsx";
+import Recipe from "../Components/Doctor/Recipe/Recipe.jsx";
+import QueryCompletion from "../Components/Doctor/QueryCompletion/QueryCompletion.jsx";
 
 const Router = () => {
   return (
@@ -21,7 +26,7 @@ const Router = () => {
         <NavBar />
         <div className='flex-grow '>
           <Routes>
-            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
 
             {/* Patient */}
@@ -40,16 +45,21 @@ const Router = () => {
             <Route exact path='/treatment-clinical-history' element={<Treatment />} />
             <Route exact path='/treatment-medication' element={<Treatment />} />
             <Route exact path='/treatment-psychology' element={<Treatment />} />
-            <Route exact path='/treatment-social-work' element={<Treatment />}  />
+            <Route exact path='/treatment-social-work' element={<Treatment />} />
             <Route exact path='/treatment-physiotherapy' element={<Treatment />} />
             <Route exact path='/treatment-others' element={<Treatment />} />
             
             <Route exact path='/profile-configuration' element={<ProfileConfiguration />} />
 
-
             {/* Doctor */}
             <Route exact path='/doctor' element={<HomeDoctor />} />
             <Route exact path='/doctorPatient' element={<Patients />} />
+            <Route exact path='/previous-consultation' element={<PreviousConsultation />} />
+            <Route exact path='/consultation' element={<Consultation />} />
+            <Route exact path='/query-completion' element={<QueryCompletion />} />
+            <Route exact path='/doctorCalendar' element={<Calendar />} />
+            <Route exact path='/doctorRecipe' element={<Recipe />} />
+
 
             <Route path='*' element={<Error404 />} />
           </Routes>

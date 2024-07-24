@@ -1,3 +1,4 @@
+import React from "react";
 import CardPatient from "../../../helpers/atoms/CardPatient";
 
 const CalendarPage = () => {
