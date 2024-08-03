@@ -9,6 +9,7 @@ import PersonalData from "../../PersonalData/PersonalData";
 import Notifications from "../../Notifications/Notifications";
 
 import DoctorContext from "../../../context/DoctorContext";
+import "./profileConfiguration.css"
 
 const DoctorConfiguration = () => {
   const [personalData, setPersonalData] = useState(false);
@@ -82,7 +83,7 @@ const DoctorConfiguration = () => {
             <img src={arrowRight} alt='arrow' className='w-6 h-6 ml-4' />
           </button>
           {personalData && (
-            <div className='mb-5'>
+            <div className='mb-5 containerPersonalData'>
               <PersonalData user={patientData} />
             </div>
           )}

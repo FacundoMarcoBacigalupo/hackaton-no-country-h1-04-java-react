@@ -2,6 +2,9 @@ import PropTypes from "prop-types"
 import { useState } from "react";
 import arrowRight from "../../../../Assets/Imgs/arrowRight.png";
 import undo from "../../../../Assets/Imgs/undo.png"
+import muyBien from "../../../../Assets/Imgs/muyBien.png"
+import normal from "../../../../Assets/Imgs/normal.png"
+import mal from "../../../../Assets/Imgs/mal.png"
 import "./plans.css"
 
 const optionsTreat = [
@@ -27,11 +30,12 @@ const PlanMedication = () => {
         <article>
             { optionsTreat.map((comp, index) => (
                 <div key={index}>
-                    <button className="option bg-stone-300 font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
+                    <button className="option font-bold flex justify-between p-2" onClick={() => toggleDropdown(index)}>
                         {comp.label}
                         <img src={arrowRight} alt="arrow" className={`w-6 h-6 ml-4 ${isOpen[index] ? 'arrow-rotate' : ''}`} />
                     </button>
                     { isOpen[index] && (
+                        <>
                         <div className="containerMedication">
                             <div className="undo">
                                 <img src={undo} alt="undo" />
@@ -65,6 +69,21 @@ const PlanMedication = () => {
                                 <button onClick={() => alert("Descargando...")}>Descargar Receta</button>
                             </div>
                         </div>
+                        <section className="feedBack">
+                            <h3>¿Cómo te sentiste con la comida?</h3>
+                            <div className="feedBackImgs">
+                                <img src={muyBien} alt="Muy bien" />
+                                <img src={normal} alt="Normal" />
+                                <img src={mal} alt="Mal" />
+                            </div>
+                            <p>¿Por qué te sentiste así?</p>
+                            <textarea name="text" id="text"></textarea>
+                            <div className="feedBackButtons">
+                                <button>Cancelar</button>
+                                <button>Confirmar</button>
+                            </div>
+                        </section>
+                        </>
                     ) }
                 </div>
             )) }
