@@ -6,8 +6,8 @@
 
 .icon-container {
     position: fixed;
-    top: 20px;
-    left: 10px;
+    top: 30px;
+    left: 30px;
     cursor: pointer;
     z-index: 1000;
     transition: all 0.3s ease;
@@ -52,18 +52,20 @@
     color: #000;
     font-weight: 700;
     font-size: 15px;
+    transition: filter 0.8s ease;
 }
-
 .buttonsOtherNavBar img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    filter: invert(0%) grayscale(100%) brightness(0%) contrast(100%); /* Imágenes negras oscuras por defecto */
 }
-
+.buttonsOtherNavBar:hover img {
+    filter: invert(35%) sepia(80%) saturate(6000%) hue-rotate(10deg);
+}
 .buttonsOtherNavBar p:hover {
     color: #FF4900;
     border-bottom: 1px solid #FF4900;
-    transition: all .4s;
 }
 
 
