@@ -1,5 +1,7 @@
 import useSpeechRecognition from "../../../hooks/useSpeechRecognition";
 import speak from "../../../Assets/Imgs/speak.png";
+import { useContext, useEffect } from "react";
+import DoctorContext from "../../../context/DoctorContext";
 
 export default function SpeechRecognition() {
   const {
@@ -9,15 +11,20 @@ export default function SpeechRecognition() {
     stopListening,
     hasRecognitionSupport,
   } = useSpeechRecognition();
+
+  const { setRecognizedText } = useContext(DoctorContext);
+  useEffect(() => {
+    setRecognizedText(text);
+  }, [text, setRecognizedText]);
   const bgColor = listening ? "bg-primary" : "bg-secondary";
   return (
     <div>
-      { hasRecognitionSupport ? (
-        <>
-          <div className='border-2 border-black rounded resize-none w-full min-h-[15vh] mb-4'>
+      {hasRecognitionSupport ? (
+        <div className='flex flex-col'>
+          <div className='border-2 bg-white text-start  border-black rounded resize-none w-96 mt-3 min-h-[15vh] mb-4'>
             {text}
           </div>
-          
+
           <div className='flex-col flex justify-center items-center'>
             <button onClick={startListening}>
               <img
@@ -26,13 +33,13 @@ export default function SpeechRecognition() {
                 alt='Hablar'
               />
             </button>
-            
+
             <button onClick={stopListening}>Stop</button>
           </div>
-        </>
+        </div>
       ) : (
         <h1>browser</h1>
-      ) }
+      )}
     </div>
   );
 }
