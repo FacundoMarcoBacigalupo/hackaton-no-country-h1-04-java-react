@@ -1,7 +1,8 @@
 .weekContainer{
     font-size: 13px;
+    width: 90%;
+    margin: auto;
 }
-
 .weekContainer img{
     width: 20px;
     height: 20px;
@@ -9,14 +10,15 @@
 
 
 .feedBack{
+    margin: auto;
     color: #191919;
     background-color: #EA526F1A;
     padding: 15px;
     border-radius: 10px;
     border: 3px solid #EA526F;
     margin-bottom: 20px;
+    width: 90%;
 }
-
 .feedBack h3{
     font-weight: 600;
     text-align: center;
@@ -67,6 +69,8 @@
     display: flex;
     justify-content: space-around;
     text-align: center;
+    width: 90%;
+    margin: auto;
 }
 
 .progress-bar-container {
@@ -85,12 +89,14 @@
 
 
 .details{
+    margin: auto;
     padding: 15px;
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
     border: 2px solid #25CED1;
     border-radius: 10px;
+    width: 90%;
 }
 
 .detailsTitle{
@@ -127,6 +133,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .detailsContent {
@@ -156,15 +163,12 @@
 
 
 
-.container {
+.containerNutrition {
+    margin: auto;
     position: relative;
 }
 
-.mainContainer {
-    transition: filter 0.3s;
-}
-
-.mainContainer.blurred {
+.blurred {
     filter: blur(5px);
 }
 
@@ -250,4 +254,14 @@
     width: 100%;
     font-weight: 500;
     font-size: 17px;
+}
+
+
+.weekContainer img, .feedBackImgs img, .detailsContainer img {
+    max-width: 100%;
+    height: auto;
+}
+
+.feedBack textarea, .feedBackButtons button, .popUpContent article img, .gram {
+    box-sizing: border-box;
 }

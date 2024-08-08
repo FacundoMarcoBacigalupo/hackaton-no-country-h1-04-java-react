@@ -48,7 +48,7 @@ const Treatment = () => {
     selectedButtonIndex !== null ? buttons[selectedButtonIndex] : null;
 
   return (
-    <section className='container'>
+    <section className='containerBigTreatments'>
       <div className='titleContainer'>
         {image && <img src={image} alt={title} />}
         <h1>{title}</h1>
