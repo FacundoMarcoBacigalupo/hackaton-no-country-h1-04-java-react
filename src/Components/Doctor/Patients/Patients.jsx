@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import CardPatient from "../../../helpers/atoms/CardPatient";
 import DoctorContext from "../../../context/DoctorContext";
 import { getAppointmentByDoctor } from "../../../services/appointmentService";
+import Spinner from "../../../helpers/atoms/Spinner";
 
 const CalendarPage = () => {
   const getFormattedDate = (date) => {
@@ -63,11 +64,11 @@ const CalendarPage = () => {
 
   const groupedAppointments = groupAppointmentsByDay(appointments);
 
-  if (loading || authLoading) return <p>Loading...</p>;
+  if (loading || authLoading) return <Spinner/>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className='p-4 flex flex-col'>
+    <div className=' flex flex-col'>
       <button className='bg-white shadow border-2 self-end mb-3  px-3 py-1 rounded'>
         Calendario
       </button>

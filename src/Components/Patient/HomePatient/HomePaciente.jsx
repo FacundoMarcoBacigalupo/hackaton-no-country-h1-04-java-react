@@ -1,15 +1,33 @@
-import imgUser from "../../../Assets/Imgs/pepita.png"
-import WeekHome from "./WeekHome.jsx";
+import { useContext, useEffect, useState } from "react";
+import WeekComponent from "./WeekComponent.jsx";
 import Day from "./Day.jsx";
+import imgUser from "../../../Assets/Imgs/imgUser.png"
 import nutricion from "../../../Assets/Imgs/apple.svg"
 import medicacion from "../../../Assets/Imgs/pill.svg"
 import turno from "../../../Assets/Imgs/outline.svg"
 import studies from "../../../Assets/Imgs/studyDoctor.svg"
 import gim from "../../../Assets/Imgs/running.svg"
+import DoctorContext from "../../../context/DoctorContext.jsx"
 import "./homePaciente.css"
 
 const HomePatient = () => {
-  let user = "Pepita"
+  const [patient, setPatient] = useState(null)
+  const { authData, fetchPatientById } = useContext(DoctorContext)
+
+  useEffect(() => {
+    const getPatient = async() =>{
+      if(authData){
+        try {
+          const patientData = await fetchPatientById(authData.id)      
+          setPatient(patientData.patient.user)  
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    }
+    
+    getPatient()
+  }, [authData, fetchPatientById])
 
   return  (
     <section className="containerHomePatient">
@@ -17,11 +35,11 @@ const HomePatient = () => {
         <div className="flex justify-center items-center mt-5 mb-4">
           <img src={imgUser} alt="img user" className="w-32 h-32" />
         </div>
-        <h1>¡Hola {user}!</h1>
+        <h1>¡Hola { patient ? patient.firstName : 'Cargando...' }!</h1>
       </div>
       
       <div>
-        <WeekHome />
+        <WeekComponent backgroundColor="bg-blueColorClear" borderColor="border-blueColorClear" textColor="text-blueColorClear" />
       </div>
       
       <div>

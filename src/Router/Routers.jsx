@@ -31,7 +31,11 @@ import DoctorConfiguration from "../Components/Doctor/DoctorConfiguration/Doctor
 import PatientList from "../Components/Doctor/PatientList/PatientList.jsx";
 import OtherNavBar from "../Components/OtherNavBar/OtherNavBar.jsx";
 import Download from "../Components/Download/Download.jsx";
-import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx"
+import OtherNavBarDoctor from "../Components/OtherNavBarDoctor/OtherNavBarDoctor.jsx";
+import TransplantHome from "../Components/Doctor/Transplant/TransplantHome.jsx";
+import TransplantProfile from "../Components/Doctor/Transplant/TransplantProfile.jsx";
+import TransplantMedicalData from "../Components/Doctor/Transplant/TransplantMedicalData.jsx";
+import TransplantSearch from "../Components/Doctor/Transplant/TransplantSearch.jsx";
 
 const PatientLayout = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth >= 500);
@@ -40,23 +44,27 @@ const PatientLayout = ({ children }) => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth >= 500);
     };
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
     handleResize();
-    
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className='w-full flex justify-center'>
       <div className='w-[500px]'>
-        <div className='flex flex-col min-h-screen'>
-          { !isSmallScreen && <NavBar /> }
-            { isSmallScreen && <OtherNavBar /> }
-            { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
-          { !isSmallScreen && <Footer /> }
+        <div className='flex flex-col h-screen'>
+          {!isSmallScreen && <NavBar />}
+          {isSmallScreen && <OtherNavBar />}
+          {isSmallScreen ? (
+            <div className='flex-grow ml-12'>{children}</div>
+          ) : (
+            <div className='flex-grow overflow-scroll'>{children}</div>
+          )}
+          {!isSmallScreen && <Footer />}
         </div>
       </div>
     </div>
@@ -70,26 +78,32 @@ const DoctorLayout = ({ children }) => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth >= 500);
     };
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
     handleResize();
-    
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (
     <div className='w-full flex justify-center'>
       <div className='w-[500px]'>
-        <div className='flex flex-col min-h-screen'>
-          { isSmallScreen && <OtherNavBarDoctor /> }
-          { isSmallScreen ? <div className='flex-grow ml-12'>{children}</div> : <div className='flex-grow'>{children}</div>}
-          { !isSmallScreen && <DoctorFooter /> }
+        <div className='flex flex-col h-screen'>
+          {isSmallScreen && <OtherNavBarDoctor />}
+          {isSmallScreen ? (
+            <div className='flex-grow p-5  ml-12'>{children}</div>
+          ) : (
+            <div className='flex-grow overflow-scroll h-full w-full p-5'>
+              {children}
+            </div>
+          )}
+          {!isSmallScreen && <DoctorFooter />}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Router = () => {
   return (
@@ -181,40 +195,18 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-studies'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-nutrition'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-physical-activity'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
           path='/treatment-clinical-history'
+          element={
+            <PrivateRoute role='PATIENT'>
+              <PatientLayout>
+                <Treatment />
+              </PatientLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/treatment-studies'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
@@ -236,7 +228,7 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-psychology'
+          path='/treatment-physical-activity'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
@@ -247,29 +239,7 @@ const Router = () => {
         />
         <Route
           exact
-          path='/treatment-social-work'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-physiotherapy'
-          element={
-            <PrivateRoute role='PATIENT'>
-              <PatientLayout>
-                <Treatment />
-              </PatientLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path='/treatment-others'
+          path='/treatment-nutrition'
           element={
             <PrivateRoute role='PATIENT'>
               <PatientLayout>
@@ -309,6 +279,50 @@ const Router = () => {
             <PrivateRoute role='DOCTOR'>
               <DoctorLayout>
                 <DoctorConfiguration />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantHome'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantHome />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantProfile/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantProfile />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/transplantMedicalData/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantMedicalData />
+              </DoctorLayout>
+            </PrivateRoute>
+          }
+        />
+         <Route
+          exact
+          path='/transplantSearch/:id'
+          element={
+            <PrivateRoute role='DOCTOR'>
+              <DoctorLayout>
+                <TransplantSearch />
               </DoctorLayout>
             </PrivateRoute>
           }

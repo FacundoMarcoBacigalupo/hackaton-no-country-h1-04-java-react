@@ -1,7 +1,5 @@
 .weekContainer{
     font-size: 13px;
-    width: 90%;
-    margin: auto;
 }
 .weekContainer img{
     width: 20px;
@@ -10,20 +8,22 @@
 
 
 .feedBack{
+    background-color: #fff;
+    color: #03A8AB;
+    box-shadow: 1px 4px 10px #13131348;
     margin: auto;
-    color: #191919;
-    background-color: #EA526F1A;
     padding: 15px;
     border-radius: 10px;
-    border: 3px solid #EA526F;
     margin-bottom: 20px;
-    width: 90%;
+    margin-top: 20px;
 }
 .feedBack h3{
     font-weight: 600;
     text-align: center;
 }
-
+.feedBack p{
+    font-weight: 600;
+}
 .feedBackImgs{
     display: flex;
     align-items: center;
@@ -35,28 +35,30 @@
     width: 35px;
     height: 35px;
 }
-
 .feedBack textarea{
-    background-color: #EA526F;
-    color: #FFF;
-    height: 40px;
+    background-color: #FFF;
+    color: #000;
+    box-shadow: 1px 4px 10px #13131348;
+    height: 60px;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 5px;
     resize: none;
+    margin-top: 10px;
 }
-
-.feedBackButtons{
+.feedBackButton{
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
 }
-.feedBackButtons button{
+.feedBackButton button{
+    background-color: #03A8AB;
+    color: #fff;
+    width: 100%;
     border-radius: 20px;
-    background-color: #EA526F;
-    padding: 10px;
-    font-weight: 700;
+    padding: 5px;
+    font-weight: 500;
 }
 
 
@@ -69,8 +71,6 @@
     display: flex;
     justify-content: space-around;
     text-align: center;
-    width: 90%;
-    margin: auto;
 }
 
 .progress-bar-container {
@@ -94,9 +94,8 @@
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: 2px solid #25CED1;
     border-radius: 10px;
-    width: 90%;
+    box-shadow: 1px 1px 5px #00000068;
 }
 
 .detailsTitle{
@@ -104,36 +103,23 @@
     justify-content: space-between;
     font-weight: 600;
     font-size: 18px;
-    color: #25CED1;
+    color: #EA526F;
 }
 
 .recommendation{
     font-size: 14px;
 }
 
-
 .detailsContainer {
     display: flex;
     align-items: center;
     margin-top: 10px;
-}
-.detailsContainer img {
-    width: 45px;
-    height: 45px;
-    border-radius: 20px;
-    object-fit: cover;
-    margin-right: 10px;
-}
-.detailsContainer section img {
-    border: 2px solid #EA526F;
-    border-radius: 50px;
 }
 
 .detailsContentWrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .detailsContent {
@@ -145,19 +131,27 @@
 }
 
 .detailsDescription {
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+.detailsDescription article{
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
+.detailsDescription span {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
 .detailsDescription p {
     margin: 0;
-    font-size: 13px;
-}
-.detailsDescription img {
-    width: 15px;
-    height: 15px;
-    object-fit: cover;
-    margin-right: 0px;
+    font-size: 15px;
 }
 
 
@@ -166,6 +160,7 @@
 .containerNutrition {
     margin: auto;
     position: relative;
+    width: 90vw;
 }
 
 .blurred {
